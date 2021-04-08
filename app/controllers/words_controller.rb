@@ -51,10 +51,10 @@ class WordsController < ApplicationController
             audio_config: audio_config
           )
         
-        # The response's audio_content is binary.
+
         save_path = Rails.root.join("public/testfile.mp3")
+        
         File.open save_path, "wb" do |file|
-            # Write the response to the output file.
             file.write response.audio_content
         end
 

@@ -2,15 +2,10 @@ class ApplicationController < ActionController::API
     require "google/cloud/translate"
     require "google/cloud/text_to_speech"
 
-
-
-    ######### JWT AUTH #########
     def issue_token(user)
         JWT.encode({user_id: user.id}, ENV['secret_key'], 'HS256')
     end
     
-    # App.js - componentDidMount()
-    # then goes to show action in Users_Controller.rb
     def current_user
         @user ||= User.find_by(id: user_id)
     end
@@ -34,18 +29,5 @@ class ApplicationController < ActionController::API
     def logged_in?
         !!current_user
     end
-
-    # def language
-    #     byebug
-    #     @category = Category.find(params[:id])
-    # end
-
-
-
-
-    
-
-
-
 
 end
