@@ -37,7 +37,12 @@ class UsersController < ApplicationController
         user = User.new(user_params)
         if user.valid?
             user.save
-            render json: user
+
+            payload = { user_id: user.id }
+            hmac_secret = ENV['HMAC_SECRET']
+            token = JWT.encode(payload, hmac_secret, 'HS256')
+
+            render json: { user: UserSerializer.new(user), token: token }
         else
             render json: { error: 'Username is already taken or password does not match. Try again.' }
         end
