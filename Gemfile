@@ -48,3 +48,5 @@ gem 'jwt'
 gem "google-cloud-translate", "~> 3.2"
 gem 'google-cloud-text_to_speech', '~> 1.2'
 
+# gem 'google-protobuf', '~> 3.7'
+gem 'google-protobuf'
