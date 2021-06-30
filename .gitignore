@@ -35,3 +35,4 @@ tmp
 
 .DS_Store
 .env
+google-credentials.json
