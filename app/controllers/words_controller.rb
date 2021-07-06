@@ -12,7 +12,7 @@ class WordsController < ApplicationController
         # translate   = Google::Cloud::Translate.translation_v2_service project_id: project_id
         # translation = translate.translate text, to: language_code
 
-        render json: { word } 
+        render json: { word: word.name } 
 
         # render json: { text: text,  translate: translation.text.inspect, language: language_code }
     end
