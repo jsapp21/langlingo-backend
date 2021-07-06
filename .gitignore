@@ -35,4 +35,7 @@ tmp
 
 .DS_Store
 .env
-google-credentials.json
+
+# Ignore application configuration
+/config/application.yml
+/config/secrets/*
