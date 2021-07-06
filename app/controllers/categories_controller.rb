@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
         project_id = ENV['GOOGLE_PROJECT_ID']
         language_code = params[:language]
 
-        translatedArr = finalArr.map do |obj|
+        translatedArr = finalArr.map do |obj| 
             
             if obj[:name] 
                 translate   = Google::Cloud::Translate.translation_v2_service project_id: project_id
