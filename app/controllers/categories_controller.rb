@@ -15,13 +15,14 @@ class CategoriesController < ApplicationController
 
 
         ########### TRANSLATION API START ###########
-        project_id = ENV['GOOGLE_PROJECT_ID']
+        # project_id = ENV['GOOGLE_PROJECT_ID']
         language_code = params[:language]
 
         translatedArr = finalArr.map do |obj| 
             
             if obj[:name] 
-                translate   = Google::Cloud::Translate.translation_v2_service project_id: project_id
+                translate   = Google::Cloud::Translate.translation_v2_service
+                # translate   = Google::Cloud::Translate.translation_v2_service project_id: project_id
                 translation = translate.translate obj[:name], to: language_code
 
                 obj.name = obj[:name] = translation.text

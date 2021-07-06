@@ -5,22 +5,24 @@ class WordsController < ApplicationController
         word = Word.find(params[:id])
         iso = [ 'es', 'fr', 'de', 'pt', 'ru', 'th', 'vi']
 
-        project_id = ENV['GOOGLE_PROJECT_ID']
+        # project_id = ENV['GOOGLE_PROJECT_ID']
         text = word.name
         language_code = iso.sample
 
-        translate   = Google::Cloud::Translate.translation_v2_service project_id: project_id
+        translate   = Google::Cloud::Translate.translation_v2_service
+        # translate   = Google::Cloud::Translate.translation_v2_service project_id: project_id
         translation = translate.translate text, to: language_code
 
         render json: { text: text,  translate: translation.text.inspect, language: language_code }
     end
 
     def create
-        project_id = ENV['GOOGLE_PROJECT_ID']
+        # project_id = ENV['GOOGLE_PROJECT_ID']
         text = params[:text]
         language_code = params[:language]
-            
-        translate   = Google::Cloud::Translate.translation_v2_service project_id: project_id
+
+        translate   = Google::Cloud::Translate.translation_v2_service    
+        # translate   = Google::Cloud::Translate.translation_v2_service project_id: project_id
         translation = translate.translate text, to: language_code
 
         render json: { text: text,  translate: translation.text.inspect, language: language_code }
